@@ -1,0 +1,70 @@
+% Cambia el título de la tabla de contenido
+% \renewcommand{\contentsname}{Índice}
+
+% Ruta de las imágenes
+\graphicspath{{./images/}}
+
+% Número de página en landscape
+\def\fillandplacepagenumber{%
+ \par\pagestyle{empty}%
+ \vbox to 0pt{\vss}\vfill
+ \vbox to 0pt{\baselineskip0pt
+   \hbox to\linewidth{\hss}%
+   \baselineskip\footskip
+   \hbox to\linewidth{%
+     \hfil\thepage\hfil}\vss}}
+
+% Número de página en landscape pdf insertado con pagestyle personalizado
+\fancypagestyle{mylandscape}{%
+  \fancyhf{}% Clear header/footer
+  \fancyfoot{% Footer
+    \makebox[\textwidth][r]{% Right
+      \rlap{\hspace{\footskip}% Push out of margin by \footskip
+        \smash{% Remove vertical height
+          \raisebox{\dimexpr.5\baselineskip+\footskip+.6\textheight}{% Raise vertically
+            \rotatebox{90}{\thepage}}}}}}% Rotate counter-clockwise
+  \renewcommand{\headrulewidth}{0pt}% No header rule
+  \renewcommand{\footrulewidth}{0pt}% No footer rule
+}
+
+
+% Ocultar sección
+\newcommand\invisiblesection[1]{%
+  \refstepcounter{section}%
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
+  \sectionmark{#1}}
+
+% Ocultar subsección
+\newcommand\invisiblesubsection[1]{%
+\refstepcounter{subsection}%
+\addcontentsline{toc}{subsection}{\protect\numberline{\thesubsection}#1}%
+\sectionmark{#1}}
+
+
+
+% Insertar pdf en formato apaisado
+% \begin{landscape}
+%     \invisiblesubsection{Tablas de calificación}
+%     \includepdf[pagecommand={\thispagestyle{mylandscape}}, noautoscale=true, scale=.85, pages={-}, turn=false, landscape]{NOMBREPDF.pdf}
+% \end{landscape}
+
+% Insertar imágen
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[trim={0 0 0 0}, clip, width=1\linewidth]{NOMBREIMAGEN.png}
+%     \footnotesize PIE DE IMÁGEN
+% \end{figure
+
+
+% Cabecera personalizada, usar con \pagestyle{custom1} o \thispagestyle{custom1}
+\fancypagestyle{custom1}{%
+  \fancyhf{} % Limpia las cabeceras y los pie de página incluída la página
+  \rhead{\color{gray}Derecha}
+  \lhead{\color{gray}Izquierda}
+  % \rfoot{Página \thepage}
+  \cfoot{\thepage}
+  % Eliminar línea horizontal del header
+  % \renewcommand{\headrulewidth}{0pt}
+  % Color de la línea y separación
+  \renewcommand{\headrule}{\vspace{-5px}\hbox to\headwidth{\color{gray}\leaders\hrule height \headrulewidth\hfill}}
+}

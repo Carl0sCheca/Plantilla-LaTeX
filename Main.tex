@@ -1,0 +1,47 @@
+\documentclass[hidelinks, 12pt]{article}
+% \selectlanguage{spanish} seleccionar el idioma si tiene múltiples
+% idiomas separados por comas en el package babel
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper, headheight=20pt, total={6in, 9in}]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx, bookmark, float}
+\usepackage{pdflscape}
+\usepackage{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{nameref}
+\usepackage{xurl}
+
+\include{Metadata}
+\include{Configuracion}
+
+% Ahorrar tiempo de compilación compilando sólo esta página
+% \includeonly{Pagina}
+
+\begin{document}
+    \include{Portada}
+    \thispagestyle{plain}{
+        \tableofcontents
+        \newpage
+    }
+    \setcounter{page}{1}
+    \pagestyle{custom1}
+
+    % Introducir aquí el contenido
+    \section{Parte 1}
+    Página 1
+    \newpage
+    Página 2
+    \newpage
+    \section{Parte 2}
+    Página 3
+    \newpage
+    Página 4
+
+    \newpage
+    \pagestyle{plain}
+    \include{Referencias}
+\end{document}
