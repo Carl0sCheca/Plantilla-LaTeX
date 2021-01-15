@@ -1,5 +1,11 @@
 \newcommand{\writeTitle}{Título}
-\newcommand{\writeAuthor}{Autor}
+\newcommand{\writeAuthor}{Autor1, Autor2, ..}
+
+\newcommand{\printAuthor}{%
+    \foreach \x[count=\xi] in \writeAuthor {%
+        \x \\
+    }
+}
 
 \hypersetup{
     pdftitle={\writeTitle},
