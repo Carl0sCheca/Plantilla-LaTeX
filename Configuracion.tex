@@ -70,3 +70,18 @@
   % Color de la línea y separación
   \renewcommand{\headrule}{\vspace{-5px}\hbox to\headwidth{\color{gray}\leaders\hrule height \headrulewidth\hfill}}
 }
+
+
+% Inserccion de imagen.
+% \includeimg[descripción]{ruta}{anchura}
+\newcommand{\includeimg}[3][]{
+    \begin{figure}[H]
+      \def\des{#1}
+        \centering
+        \includegraphics[width={#3}\textwidth]{{#2}}
+        \ifx\des\empty
+        \else
+          \caption[0.1]{{#1}}
+        \fi
+    \end{figure}
+}
